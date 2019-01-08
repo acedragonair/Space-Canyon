@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class coin : MonoBehaviour {
 
     // rigidbody = coin coin now effect the rigidbody
+
+    
     public Rigidbody Coin;
     public bool inWindArea = false;
     public GameObject windZone;
@@ -14,10 +16,11 @@ public class coin : MonoBehaviour {
     public float direction = 0;
     public static Vector3 negativeInfinitely;
     public Image[] Lives;
-    private int hits = 3;
+    private int hits = 1;
     public GameManager gameManager;
+    public float speed = 1;
 
-    public Vector3 cam;//store the location of the camera xyz
+    
     
 
     void Start () {
@@ -36,21 +39,22 @@ public class coin : MonoBehaviour {
         //movement to the left
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            Coin.AddForce(-1, 0, 0 * Time.deltaTime);
-            direction = -1;
+            Coin.AddForce(Vector3.left * 250);
         }
         //movement to the right
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            Coin.AddForce(1, 0, 0 * Time.deltaTime);
-            direction = 1;
+            Coin.AddForce(Vector3.right * 250);
         }
+
+        
 	}
 
     private void FixedUpdate()
     {
         if (inWindArea)
         {
+            //this adds  the force to the coin if its in the wind area. its will get both the direction and the power
             Coin.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().power);
         }
         Debug.Log(inWindArea);
@@ -60,6 +64,7 @@ public class coin : MonoBehaviour {
     {
         if(other.gameObject.tag == "windArea")
         {
+            //this is pretty much turning on the wind area if a game object enter this gameobject tag windArea
             windZone = other.gameObject;
             inWindArea = true;
         }
@@ -68,6 +73,7 @@ public class coin : MonoBehaviour {
     {
         if(other.gameObject.tag == "windArea")
         {
+            //this turns the gameobject taged windArea off if the object exits
             inWindArea = false;
         }
     }
