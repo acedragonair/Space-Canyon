@@ -77,25 +77,28 @@ public class coin : MonoBehaviour {
             inWindArea = false;
         }
     }
-    private void OnCollisionEnter(Collision coll)
+    /*private void OnCollisionEnter(Collision coll)
     {
         if(coll.gameObject.tag == "Wall")
         {
             Damage();
         }
-    }
-    private void Damage()
+    }*/
+    /*private void Damage()
     {
         Lives[hits].enabled = false;
         hits--;
         if(hits < 0)
         {
-            gameOver();
+            GameOver();
         }
-    }
-    private void gameOver()
+    }*/
+
+    /*private void GameOver()
     {
         gameManager.GameOver();
         this.gameObject.SetActive(false);
-    }
+    }*/
+
+
 }

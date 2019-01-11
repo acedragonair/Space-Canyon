@@ -6,6 +6,7 @@ TagManager:
   tags:
   - windArea
   - Wall
+  - coin
   layers:
   - Default
   - TransparentFX

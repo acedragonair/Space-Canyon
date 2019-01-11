@@ -13,13 +13,18 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        game.SetActive(false);
+        
+        /*game.SetActive(false);
         gameOver.SetActive(false);
+        menu.SetActive(true);*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (isGameover == true)
+        {
+            SceneManager.LoadScene(0);
+        }
 	}
     
     public void GameOver()
@@ -31,8 +36,9 @@ public class GameManager : MonoBehaviour {
     
     public void StartGame()
     {
-        menu.SetActive(true);
+        menu.SetActive(false);
         game.SetActive(true);
     }
+
 
 }
